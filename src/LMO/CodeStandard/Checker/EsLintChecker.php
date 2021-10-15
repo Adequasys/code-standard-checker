@@ -7,7 +7,7 @@ use Symfony\Component\Process\Process;
 
 class EsLintChecker extends CheckerAbstract
 {
-    protected $extensions = ['js' => true];
+    protected $extensions = ['js' => true, 'ts' => true, 'tsx' => true];
 
     /**
      * @param EditedFile[] $files
