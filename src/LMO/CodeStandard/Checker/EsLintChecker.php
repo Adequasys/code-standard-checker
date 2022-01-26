@@ -3,6 +3,7 @@
 namespace LMO\CodeStandard\Checker;
 
 use LMO\CodeStandard\FileSystem\EditedFile;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 class EsLintChecker extends CheckerAbstract
@@ -50,6 +51,11 @@ class EsLintChecker extends CheckerAbstract
                 'git show :' . $fileName . ' | ' . $command . $fileName
             );
             $process->run();
+
+            if ($process->getExitCode() === 2) {
+                throw new ProcessFailedException($process);
+            }
+
             $fileViolations = json_decode($process->getOutput());
             if (!empty($fileViolations[0])) {
                 $results[] = $fileViolations[0];
