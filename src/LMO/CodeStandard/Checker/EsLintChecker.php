@@ -43,7 +43,7 @@ class EsLintChecker extends CheckerAbstract
     {
         $results = [];
         $command = $this->vendorDirectories['node'] . 'eslint' .
-            ' --no-eslintrc --format=json  --config ' . $this->config['standard'] .
+            ' --no-eslintrc --format=json  --config ' . $this->getConfigFileCopy() .
             ' --stdin --stdin-filename=';
         foreach ($files as $file) {
             $fileName = $file->getName();
@@ -62,5 +62,22 @@ class EsLintChecker extends CheckerAbstract
             }
         }
         return $results;
+    }
+
+    private function getConfigFileCopy(): string
+    {
+        $configCopiesDir = $this->scriptPath . DIRECTORY_SEPARATOR
+            . 'eslint-config-copies';
+
+        if (!is_dir($configCopiesDir)) {
+            mkdir($configCopiesDir);
+        }
+
+        $configFileCopy = $configCopiesDir . DIRECTORY_SEPARATOR
+            . basename($this->config['standard']);
+
+        copy($this->config['standard'], $configFileCopy);
+
+        return $configFileCopy;
     }
 }
