@@ -52,7 +52,7 @@ class EsLintChecker extends CheckerAbstract
             );
             $process->run();
 
-            if ($process->getExitCode() === 2) {
+            if ($process->getExitCode() > 1) {
                 throw new ProcessFailedException($process);
             }
 
