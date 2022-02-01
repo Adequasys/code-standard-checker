@@ -88,6 +88,18 @@ class EsLintChecker extends CheckerAbstract
 
         copy($file, $configFileCopy);
 
+        $extendedConfig
+            = json_decode(file_get_contents($configFileCopy), true)['extends']
+            ?? null;
+
+        if ($extendedConfig) {
+            $extendedFile
+                = dirname($file) . DIRECTORY_SEPARATOR . $extendedConfig;
+
+            if (is_file($extendedFile)) {
+                $this->copyConfigFile($extendedFile, $configCopiesDir);
+            }
+        }
 
         return $configFileCopy;
     }
