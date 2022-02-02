@@ -73,10 +73,33 @@ class EsLintChecker extends CheckerAbstract
             mkdir($configCopiesDir);
         }
 
-        $configFileCopy = $configCopiesDir . DIRECTORY_SEPARATOR
-            . basename($this->config['standard']);
+        return $this->copyConfigFile(
+            $this->config['standard'],
+            $configCopiesDir
+        );
+    }
 
-        copy($this->config['standard'], $configFileCopy);
+    private function copyConfigFile(
+        string $file,
+        string $configCopiesDir
+    ): string {
+        $configFileCopy
+            = $configCopiesDir . DIRECTORY_SEPARATOR . basename($file);
+
+        copy($file, $configFileCopy);
+
+        $extendedConfig
+            = json_decode(file_get_contents($configFileCopy), true)['extends']
+            ?? null;
+
+        if ($extendedConfig) {
+            $extendedFile
+                = dirname($file) . DIRECTORY_SEPARATOR . $extendedConfig;
+
+            if (is_file($extendedFile)) {
+                $this->copyConfigFile($extendedFile, $configCopiesDir);
+            }
+        }
 
         return $configFileCopy;
     }
