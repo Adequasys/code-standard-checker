@@ -2,11 +2,11 @@
     "name": "ludomon/code-standard-checker",
     "description": "Perform automated code quality checks before commit",
     "require": {
-        "php": "^7.2",
-        "squizlabs/php_codesniffer": "^3.4",
-        "symfony/console": "^4.2",
-        "symfony/process": "^4.2",
-        "symfony/yaml": "^4.2",
+        "php": "^7.4|^8.0",
+        "squizlabs/php_codesniffer": "^3.6",
+        "symfony/console": "^4.4",
+        "symfony/process": "^4.4",
+        "symfony/yaml": "^4.4",
         "ext-json": "*",
         "ext-simplexml": "*"
     },
