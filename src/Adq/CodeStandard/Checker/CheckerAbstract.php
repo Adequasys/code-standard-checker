@@ -1,9 +1,9 @@
 <?php
 
-namespace LMO\CodeStandard\Checker;
+namespace Adq\CodeStandard\Checker;
 
-use LMO\CodeStandard\FileSystem\EditedFile;
-use LMO\CodeStandard\FileSystem\FileManager;
+use Adq\CodeStandard\FileSystem\EditedFile;
+use Adq\CodeStandard\FileSystem\FileManager;
 
 abstract class CheckerAbstract
 {

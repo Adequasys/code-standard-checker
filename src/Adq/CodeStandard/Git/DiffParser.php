@@ -1,8 +1,8 @@
 <?php
 
-namespace LMO\CodeStandard\Git;
+namespace Adq\CodeStandard\Git;
 
-use LMO\CodeStandard\FileSystem\EditedFile;
+use Adq\CodeStandard\FileSystem\EditedFile;
 
 class DiffParser
 {

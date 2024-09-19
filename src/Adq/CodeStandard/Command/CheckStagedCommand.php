@@ -1,11 +1,11 @@
 <?php
 
-namespace LMO\CodeStandard\Command;
+namespace Adq\CodeStandard\Command;
 
-use LMO\CodeStandard\Checker\CheckerAbstract;
-use LMO\CodeStandard\Git\DiffParser;
-use LMO\CodeStandard\FileSystem\EditedFile;
-use LMO\CodeStandard\FileSystem\FileManager;
+use Adq\CodeStandard\Checker\CheckerAbstract;
+use Adq\CodeStandard\Git\DiffParser;
+use Adq\CodeStandard\FileSystem\EditedFile;
+use Adq\CodeStandard\FileSystem\FileManager;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;

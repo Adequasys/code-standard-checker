@@ -1,8 +1,8 @@
 <?php
 
-namespace LMO\CodeStandard\Checker;
+namespace Adq\CodeStandard\Checker;
 
-use LMO\CodeStandard\FileSystem\EditedFile;
+use Adq\CodeStandard\FileSystem\EditedFile;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 

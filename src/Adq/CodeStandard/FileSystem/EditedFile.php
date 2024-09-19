@@ -1,6 +1,6 @@
 <?php
 
-namespace LMO\CodeStandard\FileSystem;
+namespace Adq\CodeStandard\FileSystem;
 
 class EditedFile
 {

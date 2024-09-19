@@ -7,6 +7,6 @@ use Symfony\Component\Console\Application;
 
 $application = new Application();
 $application->add(
-    new \LMO\CodeStandard\Command\CheckStagedCommand(__DIR__)
+    new \Adq\CodeStandard\Command\CheckStagedCommand(__DIR__)
 );
 $application->run();

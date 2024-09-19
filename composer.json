@@ -1,5 +1,5 @@
 {
-    "name": "ludomon/code-standard-checker",
+    "name": "adequasys/code-standard-checker",
     "description": "Perform automated code quality checks before commit",
     "require": {
         "php": "^7.4|^8.0",
@@ -12,13 +12,13 @@
     },
     "authors": [
         {
-            "name": "LudoMon",
-            "email": "ludo.zegeek@gmail.com"
+            "name": "Adequasys",
+            "email": "no-reply@adequasys.com"
         }
     ],
     "autoload" : {
         "psr-0" : {
-            "LMO" : "src/"
+            "Adq" : "src/"
         }
     }
 }
