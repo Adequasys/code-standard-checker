@@ -206,9 +206,7 @@ class CheckStagedCommand extends Command
      */
     private function getEditedFiles(): array
     {
-        $process = new Process(
-            'git diff -U0 --diff-filter=ACMR --cached'
-        );
+        $process = new Process(['git diff -U0 --diff-filter=ACMR --cached']);
         $process->run();
 
         $editedFiles = $this->diffParser->parse(
