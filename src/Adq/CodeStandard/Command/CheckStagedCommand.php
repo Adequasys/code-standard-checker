@@ -206,7 +206,7 @@ class CheckStagedCommand extends Command
      */
     private function getEditedFiles(): array
     {
-        $config = Yaml::parse(file_get_contents(ROOTDIR.'/config.yml'));
+        $config = Yaml::parse(file_get_contents(getcwd() . DIRECTORY_SEPARATOR . '/config.yml'));
         if (!empty($config['git']['repository'])) {
             $repoPath = $config['git']['repository'];
         } else {
