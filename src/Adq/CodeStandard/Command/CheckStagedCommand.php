@@ -222,6 +222,12 @@ class CheckStagedCommand extends Command
             $process->getOutput()
         );
 
+        if (empty($editedFiles) && !empty($process->getOutput())) {
+            throw new \RuntimeException(
+                'Git output is not empty: ' . var_export($process->getOutput(), true)
+            );
+        }
+
         return $this->fileManager->groupFilesByStandard(
             $editedFiles,
             $this->standardsConfig

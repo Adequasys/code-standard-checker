@@ -55,9 +55,15 @@ class PhpCsChecker extends CheckerAbstract
                 'git show :' . $file->getName() . ' | ' . $command
             );
             $process->run();
-            $fileViolations = new \SimpleXMLElement($process->getOutput());
-            if (!empty($fileViolations->file)) {
-                $results[$file->getName()] = $fileViolations->file;
+            try {
+                $fileViolations = @(new \SimpleXMLElement($process->getOutput()));
+                if (!empty($fileViolations->file)) {
+                    $results[$file->getName()] = $fileViolations->file;
+                } else {
+                    throw new \Exception('(' . __METHOD__ . ') Process output cannot be parsed: ' . var_export($fileViolations, true));
+                }
+            } catch (\Exception $e) {
+                throw new \Exception('(' . __METHOD__ . ') Process output cannot be parsed: ' . $e->getMessage());
             }
         }
         return $results;
