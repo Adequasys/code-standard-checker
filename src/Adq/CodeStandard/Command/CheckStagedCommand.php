@@ -210,7 +210,7 @@ class CheckStagedCommand extends Command
         if (!empty($config['git']['repository'])) {
             $repoPath = $config['git']['repository'];
         } else {
-            throw new \RuntimeException('Please set a git repo in config')
+            throw new \RuntimeException('Please set a git repo in config');
         }
 
         $process = Process::fromShellCommandLine(
