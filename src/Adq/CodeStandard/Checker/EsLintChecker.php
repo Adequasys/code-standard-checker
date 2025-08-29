@@ -47,7 +47,7 @@ class EsLintChecker extends CheckerAbstract
             ' --stdin --stdin-filename=';
         foreach ($files as $file) {
             $fileName = $file->getName();
-            $process = new Process(
+            $process = Process::fromShellCommandline(
                 'git show :' . $fileName . ' | ' . $command . $fileName
             );
             $process->run();

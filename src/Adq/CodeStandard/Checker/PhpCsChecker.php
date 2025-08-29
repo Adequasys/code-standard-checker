@@ -51,7 +51,7 @@ class PhpCsChecker extends CheckerAbstract
         $command = $this->vendorDirectories['composer'] . 'phpcs' .
             ' --report=xml  --standard=' . $this->config['standard'] . ' -';
         foreach ($files as $file) {
-            $process = new Process(
+            $process = Process::fromShellCommandline(
                 'git show :' . $file->getName() . ' | ' . $command
             );
             $process->run();
