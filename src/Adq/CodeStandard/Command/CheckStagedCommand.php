@@ -206,9 +206,8 @@ class CheckStagedCommand extends Command
      */
     private function getEditedFiles(): array
     {
-        $config = Yaml::parse(file_get_contents(ROOTDIR.'/config.yml'));
-        if (!empty($config['git']['repository'])) {
-            $repoPath = $config['git']['repository'];
+        if (!empty($this->standardsConfig['main']['git']['repository'])) {
+            $repoPath = $this->standardsConfig['main']['git']['repository'];
         } else {
             throw new \RuntimeException('Please set a git repo in config');
         }
