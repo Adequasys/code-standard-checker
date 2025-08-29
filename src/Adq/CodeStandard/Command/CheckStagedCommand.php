@@ -206,8 +206,18 @@ class CheckStagedCommand extends Command
      */
     private function getEditedFiles(): array
     {
-        $process = new Process(['git diff -U0 --diff-filter=ACMR --cached']);
-        $process->run();
+        $config = Yaml::parse(file_get_contents(ROOTDIR.'/config.yml'));
+        if (!empty($config['git']['repository'])) {
+            $repoPath = $config['git']['repository'];
+        } else {
+            throw new \RuntimeException('Please set a git repo in config');
+        }
+
+        $process = Process::fromShellCommandLine(
+            'git config --global --add safe.directory ' . $repoPath
+            . ' && git diff -U0 --diff-filter=ACMR --cached'
+        );
+        $process->setWorkingDirectory($repoPath)->run();
 
         $editedFiles = $this->diffParser->parse(
             $process->getOutput()
