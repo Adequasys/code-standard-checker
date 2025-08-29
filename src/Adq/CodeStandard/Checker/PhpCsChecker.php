@@ -55,7 +55,7 @@ class PhpCsChecker extends CheckerAbstract
                 'git show :' . $file->getName() . ' | ' . $command
             );
             $process->run();
-            $fileViolations = new \SimpleXMLElement($process->getOutput());
+            $fileViolations = @(new \SimpleXMLElement($process->getOutput()));
             if (!empty($fileViolations->file)) {
                 $results[$file->getName()] = $fileViolations->file;
             }
