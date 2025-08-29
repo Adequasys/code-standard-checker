@@ -220,6 +220,10 @@ class CheckStagedCommand extends Command
         );
         $process->setWorkingDirectory($repoPath)->run();
 
+        $editedFiles = $this->diffParser->parse(
+            $process->getOutput()
+        );
+
         return $this->fileManager->groupFilesByStandard(
             $editedFiles,
             $this->standardsConfig
